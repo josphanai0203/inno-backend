@@ -5,10 +5,9 @@ const { generateContent } = require("../service/gemini.service");
 class ChatboxController {
   async generateContent(req, res, next) {
     const { prompt } = req.body;
-    const stream = generateContent({ prompt });
-    stream.pipe(res);
+    const result = await generateContent({ prompt });
+    res.status(200).json(result);
   }
-  
 }
 
 module.exports = new ChatboxController();

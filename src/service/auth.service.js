@@ -28,6 +28,11 @@ const handleLogin = async ({ id, tokenLogin }) => {
     message: "Success",
     data: {
       token,
+      user: {
+        id: user.id,
+        name: user.name,
+        avatarUrl: user.avatarUrl,
+      }
     },
   };
 };

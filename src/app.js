@@ -7,7 +7,7 @@ require('./config/passport')
 
 // Middleware
 app.use(cors({
-    origin: process.env.CORS_ORIGIN,
+    origin: "*",
 }))
 app.use(compression());
 app.use(express.json());

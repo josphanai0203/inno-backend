@@ -1,4 +1,4 @@
-const userModel = require("../repository/user.repo");
+const userModel = require("../model/user.model");
 
 
 const findUserById = async (id) => {

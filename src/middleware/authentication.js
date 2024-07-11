@@ -9,21 +9,23 @@ const authentication = async (req, res, next) => {
       message: "Unauthorized",
     });
   }
-  const verifyToken = await verifyToken(jwt);
-  if (!verifyToken) {
+  const decode = await verifyToken(jwt);
+  if (!decode) {
     return res.status(401).json({
       status: 401,
       message: "Unauthorized",
     });
   }
-  if (verifyToken.id !== id) {
+  if (decode.id !== id) {
     return res.status(401).json({
       status: 401,
       message: "Unauthorized",
     });
   }
-  req.user = verifyToken;
+  req.user = decode;
   next();
 };
 
-module.exports = authentication;
+module.exports = {
+  authentication,
+};
