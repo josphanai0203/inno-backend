@@ -3,6 +3,7 @@ const express = require("express");
 const router = express.Router();
 const asyncHandler = require("express-async-handler");
 const Post = require("../../model/Post");
+const {authentication} = require("../../middleware/authentication");
 
 router.get('/posts', async (req, res) => {
     try {
@@ -26,7 +27,7 @@ router.get('/posts', async (req, res) => {
     }
   });
 
-  router.post('/add-post', async (req, res) => {
+  router.post('/add-post', authentication, async (req, res) => {
     try {
       const post = await Post.create(req.body);
       res.status(201).json(post);
@@ -58,7 +59,7 @@ router.get('/posts', async (req, res) => {
     }
   });
 
-  router.get('/edit/:id', async (req, res) => {
+  router.get('/edit/:id', authentication, async (req, res) => {
     try {
       const post = await Post.findById(req.params.id);
       if (post) {        
@@ -71,7 +72,7 @@ router.get('/posts', async (req, res) => {
     }
   });
   
-  router.put('/edit-post/:id', async (req, res) => {
+  router.put('/edit-post/:id', authentication, async (req, res) => {
     try {
       const post = await Post.findByIdAndUpdate(req.params.id, {
         headline: req.body.headline,
@@ -88,7 +89,7 @@ router.get('/posts', async (req, res) => {
     }
   });
 
-  router.delete('/delete-post/:id', async (req, res) => {
+  router.delete('/delete-post/:id', authentication, async (req, res) => {
     try {
       const post = await Post.findByIdAndDelete(req.params.id);
       if (post) {
