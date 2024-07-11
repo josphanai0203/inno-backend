@@ -1,8 +1,7 @@
+"use strict";
 const express = require("express");
 const router = express.Router();
-
-router.use("/chatbox", require("./chatbox"));
-router.use("/auth", require("./auth"));
+const asyncHandler = require("express-async-handler");
 
 
 module.exports = router;
