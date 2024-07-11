@@ -31,5 +31,7 @@ router.get(
 );
 
 router.post("/login", asyncHandler(authController.login));
+router.post("/logout", asyncHandler(authController.logout));
+router.post("/checkAuth", asyncHandler(authController.checkAuth));
 
 module.exports = router;

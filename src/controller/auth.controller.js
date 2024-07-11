@@ -16,6 +16,18 @@ class AuthController {
     });
     return res.status(response.status).json(response);
   };
+
+  logout = async (req, res) => {
+    return res.status(200).json({
+      message: "Logout success",
+    });
+  };
+
+  checkAuth = async (req, res) => {
+    return res.status(200).json({
+      message: "Authorized",
+    });
+  };
 }
 
 module.exports = new AuthController();
