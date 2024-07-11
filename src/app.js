@@ -1,9 +1,13 @@
 const compression = require("compression");
 const express = require("express");
 const cors = require("cors");
+// const Database = require("./dbs/init.mongo");
 
 const app = express();
 require('./config/passport')
+
+// //Connect Database
+// Database();
 
 // Middleware
 app.use(cors({
@@ -16,6 +20,7 @@ app.use(express.urlencoded({ extended: true }));
 require("./dbs/init.mongo");
 // Routes
 app.use("/v1/api", require("./router"));
+
 
 // Server
 app.use((req, res, next) => {
