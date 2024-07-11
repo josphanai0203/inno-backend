@@ -10,7 +10,7 @@ passport.use(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: "/v1/api/auth/google/callback",
+      callbackURL: "https://fpt.has.io.vn/v1/api/auth/google/callback",
     },
     async function (accessToken, refreshToken, profile, cb) {
       // them user vaof dbsds
